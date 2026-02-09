@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:16
+    container_name: mini_ledger_db_flask
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: mini_ledger
+      POSTGRES_USER: mini_ledger_user
+      POSTGRES_PASSWORD: mini_ledger_pass
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data_flask:/var/lib/postgresql/data
+
+volumes:
+  postgres_data_flask:
